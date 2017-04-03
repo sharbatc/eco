@@ -145,19 +145,17 @@ ax = fig5.add_subplot(111)
 Q = np.arange(0,3.5,0.1)
 MC = 3*Q**2 - 12*Q + 15
 UTC = Q**2 - 6*Q + 15
-MR1 = -20*Q + 20
-D1 = -10*Q + 20
+MR2 = -20*Q + 20
+D2 = -10*Q + 20
+MR1 = -16*Q + 32
+D1 = -8*Q + 32
 
 mc, = ax.plot(Q,MC, label = 'mc')
-mr1, = ax.plot(Q,MR1, label = 'mr')
+mr1, = ax.plot(Q,MR1, label = 'mr1')
 utc, = ax.plot(Q,UTC, label = 'utc')
 d1, = ax.plot(Q,D1, label='d')
-
-MR2 = -16*Q + 32
-D2 = -8*Q + 32
-
 mc, = ax.plot(Q,MC, label = 'mc')
-mr2, = ax.plot(Q,MR2, label = 'mr')
+mr2, = ax.plot(Q,MR2, label = 'mr2')
 utc, = ax.plot(Q,UTC, label = 'utc')
 d2, = ax.plot(Q,D2, label='d')
 
@@ -168,6 +166,14 @@ ax.legend([mc,mr1,utc,d1,mr2,d2],['MC','MR1','UTC','D1','MR2','D2'])
 ax.set_ylabel('Price per quantity')
 ax.set_xlabel('Quantity (in appropriate units)')
 
+eq_x, = ax.plot(1.75+np.zeros(len(np.arange(0,33,1))),np.arange(0,33,1), '--',label = 'eq_x', color = 'r')
+eq_x2, = ax.plot(0.80+np.zeros(len(np.arange(0,33,1))),np.arange(0,33,1), '--',label = 'eq_x1', color = 'r')
+eq_x3, = ax.plot(2.55+np.zeros(len(np.arange(0,33,1))),np.arange(0,33,1), '--',label = 'eq_x2', color = 'r')
+eq_y, = ax.plot(np.arange(0,3.6,0.1), 4+np.zeros(len(np.arange(0,3.6,0.1))),'--',label = 'eq_y', color = 'b')
+
+ax.annotate('MR1(Q1)',xy=(1.75,4),xytext=(2,10.5),arrowprops=dict(arrowstyle="->",connectionstyle="angle3"))
+ax.annotate('MR2(Q2)',xy=(0.8,4),xytext=(0.1,7),arrowprops=dict(arrowstyle="->",connectionstyle="angle3"))
+ax.annotate('MC(Q1+Q2)',xy=(2.55,4),xytext=(2.75,1.9),arrowprops=dict(arrowstyle="->",connectionstyle="angle3"))
 plt.tight_layout()
 fig5.savefig('images/sec1_5.png')
 
